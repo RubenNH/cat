@@ -6,7 +6,11 @@ class CatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CatViewModel(),
+      create: (context) {
+        final model = CatViewModel();
+        model.fetchCat();
+        return model;
+      },
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Cat'),
